@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 
 from models.event import Event
 
@@ -8,9 +8,8 @@ app = FastAPI()
 
 @app.get("/")
 def seal():
-    return HTMLResponse(f"""
-    <img src='seal-spinning-around.gif'/>
-    """)
+    return FileResponse(path="./seal-spinning-around.gif")
+
 
 @app.post("/event")
 def create_event(event: Event):
