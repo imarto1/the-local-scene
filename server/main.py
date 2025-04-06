@@ -8,7 +8,7 @@ app = FastAPI()
 
 @app.get("/")
 def seal():
-    return "i am alive!"
+    return "an morte, irmicus!"
 
 
 @app.post("/event")
