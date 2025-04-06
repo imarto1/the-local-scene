@@ -15,7 +15,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          cd /home/ubuntu/the-local-scene
+          cd /home/ubuntu/the-local-scene/server
           git pull
           source venv/bin/activate
           pip install -r requirements.txt
