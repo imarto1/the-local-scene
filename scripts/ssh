@@ -1,0 +1,1 @@
+ssh -i "server_key.pem" ubuntu@ec2-13-60-182-115.eu-north-1.compute.amazonaws.com
