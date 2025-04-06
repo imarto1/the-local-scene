@@ -8,7 +8,7 @@ app = FastAPI()
 
 @app.get("/")
 def seal():
-    return FileResponse(path="./seal-spinning-around.gif")
+    return FileResponse(path="./horse.png")
 
 
 @app.post("/event")
