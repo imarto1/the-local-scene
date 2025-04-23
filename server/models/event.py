@@ -1,4 +1,4 @@
-from typing import Optional, Tuple, Literal
+from typing import Optional, Tuple, Literal, List
 
 from pydantic import BaseModel, Field
 
@@ -14,3 +14,12 @@ class Event(BaseModel):
     radius: Optional[int] = Field(
         description="A radius around the event in which the event is occurring, (if applicable)."
     )
+
+
+class GetEventsBody(BaseModel):
+    location: Tuple[float, float] = Field(description="The location to look from.")
+    radius: int = Field(description="The radius to search events in around the current location.")
+
+
+class GetEventsResponse(BaseModel):
+    events: List[Event] = Field(description="The events in the searched radius around the current location.")
