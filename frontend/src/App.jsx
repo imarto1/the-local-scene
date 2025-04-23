@@ -1,11 +1,13 @@
 import './App.css'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useState, useEffect } from 'react';
+import * as icons from "lucide-react"
+import MapMarker from './components/marker/marker';
 
 function App() {
   const [userLocation, setUserLocation] = useState(null);
-
+  const []
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -23,19 +25,19 @@ function App() {
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
-  }, []);
+  }, [userLocation]);
   return <>
   {userLocation ? <div id="root" style={{ height: "100vh", width: "100%" }}>
-      <MapContainer center={userLocation} zoom={13} style={{ height: "100%", width: "100%" }}>
+      <MapContainer center={userLocation} zoom={17} style={{ height: "100%", width: "100%" }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
-        {/* <Marker position={[51.505, -0.09]}>
+        <MapMarker position={userLocation} icon={<icons.PersonStandingIcon color='green' size={32}/>}>
           <Popup>
-            A pretty popup. <br /> Easily customizable.
+            You are here!
           </Popup>
-        </Marker> */}
+        </MapMarker>
       </MapContainer>
     </div> : <h1>"Couldn't get location"</h1>}
   </>
